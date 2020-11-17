@@ -43,12 +43,12 @@ Begin WebPage pgDemo
       IconSize        =   0
       IconType        =   2
       Index           =   -2147483648
-      Indicator       =   0
+      Indicator       =   1
       IsVertical      =   False
-      Label           =   "Test"
+      Label           =   "Click me to change the icon!"
       LabelColor      =   &c00000000
       LabelSize       =   0
-      Left            =   240
+      Left            =   150
       LockBottom      =   False
       LockedInPosition=   False
       LockHorizontal  =   True
@@ -61,7 +61,7 @@ Begin WebPage pgDemo
       Tooltip         =   ""
       Top             =   20
       Visible         =   True
-      Width           =   120
+      Width           =   300
    End
 End
 #tag EndWebPage
@@ -69,6 +69,14 @@ End
 #tag WindowCode
 #tag EndWindowCode
 
+#tag Events btnTest
+	#tag Event
+		Sub Pressed()
+		  // Can now update after creation thanks to Tim Parnell :)
+		  me.IconName = "air-freshener"
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Index"
