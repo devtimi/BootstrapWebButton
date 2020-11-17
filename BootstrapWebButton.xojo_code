@@ -227,62 +227,58 @@ Inherits WebButton
 
 
 	#tag Note, Name = Read Me
-		By Bruno Frechette bruno@newmood.com
-		Thanks to Brock Nash for the core syntax which inspired this work :-)
+		# BootstrapWebButton
+		Xojo WebButton subclass that allows icons. This class modifies the caption
+		of the button using the ``<raw></raw>`` tags to insert html that will display
+		an icon in the button. The class supports both built in Bootstrap icons and
+		FontAwesome 5 icons.
 		
-		This class modifies the caption of the button using the <raw></raw> option to add some html code to display an icon in the button.
-		The class supports both bootstrap and fontawesome 5 icons.
+		## Usage
+		To display an icon on a `BootstrapWebButton` instance select the Icon Type and
+		Icon Name. Bootstrap icons will pass the icon name to Xojo's `WebPicture.BoostrapIcon`
+		function. FontAwesome icons will automatically prefix, enter only the icon name
+		as it is displayed in the icon list (without `fas fa-`).
 		
+		### Default Sizes
+		By default, the BootstrapWebButton will use the global font size. This can be
+		overriden with the `LabelSize` and `IconSize` properties. To use the default
+		sizes, set `LabelSize` and/or `IconSize` to `0`.
 		
+		### Colors
+		The button will use default global coloring for the label and icon. This can be
+		overriden by selecting a color and setting the `HasLabelColor` or `HasIconColor`
+		property `true`.
 		
-		Some usage Notes...
+		### Font Awesome Pro Icons
+		The class has been tested with the free versions of FontAwesome icons, though pro
+		icons are expected to work. To load pro icons the FontAwesome CSS link will need
+		to be changed in the Javascript loading source. This is stored in the 
+		kFontAwesomeLoadJS` constant.
 		
+		## Authors
+		Original class: Bruno Frechette - bruno@newmood.com
 		
-		Font Awesome link:
-		Add following parameter in app.htmlheader, which may require adjustments in the future as the version changes.
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
-		You may download the required files locally and change the link to point elsewhere.
-		I may add specific information on this and even adapt the class to include the files directly in the project without any external link in the future.
+		Automagic CSS: Tim Parnell - strawberrysw.com
 		
-		Font Awesome pro icons:
-		Icons in Font Awesome are grouped in different themes:  solid, regular, light, duotone, brands.
-		Note that light and duotone are pro icons, as well as some icons in the solid, regular and brands groups.
-		Curently, the class has been tested with the free versions and the link mentioned in this doc points to the official Font Awesome CDN (content distribution network).
-		It should work without problems with pro icons provided you adjust the link to the one provided with your pro subscription.
+		Inspired by posts from Brock Nash
 		
-		Default sizes:
-		Bootstrap css styles define the text size and color and icon size.
-		Although the class allows to override these properties, you may want to keep the default as defined in the css.
-		To use the defaults, set the icon and caption size to 0 and uncheck "SetCaptionColor" (false).
-		The icon color is always used.
+		## License
+		This class can be modified at will, is reusable, distributable, for commercial
+		or any other use.
 		
-		Color transparency:
-		The color picker in the Xojo IDE does not allow to select the alpha value.
-		You can set the color with transparency in code.
-		Put the code to set the color in the opening event of the instance.
+		This class is distributed as "beerware". If you find this class useful and want
+		to express your gratitude, buy us a beer at the next Xojo conference or send a 
+		ew dollars through PayPal at bruno@newmood.com. If you do, I'll send you a picture
+		of the beer I drank with your donation.
 		
-		Button size:
-		The width of the button as set in the IDE is kept.
-		Unfortunately, the height is ignored and adjusted at runtime according to the size of the icon and text
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+		INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+		PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+		LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+		TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+		OR OTHER DEALINGS IN THE SOFTWARE.
 		
-		Live changes:
-		The html is set for the button in its opening event and cannot be changed once set.
-		
-		
-		
-		
-		Licence:
-		This class can be modified at will, is reusable, distributable, for commercial or any other use.
-		However you cannot blame me if it does not do what you want, creates software problems,
-		physical adverse effects (pimples, rashes, itching, etc.) or causes any other bad thing.
-		
-		It is distributed as beerware.
-		What is beerware? Well, if you find this class useful and want to express your gratitude, buy me a beer!
-		Either at the next Xojo conference, or send me a few Dollars/Euros/Other through Paypal at bruno@newmood.com
-		If you do, I'll send you a picture of the beer I drank with your donation.
-		
-		
-		
+		###
 		
 	#tag EndNote
 
