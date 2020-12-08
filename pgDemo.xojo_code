@@ -4,7 +4,7 @@ Begin WebPage pgDemo
    Compatibility   =   ""
    ControlID       =   ""
    Enabled         =   False
-   Height          =   400
+   Height          =   520
    ImplicitInstance=   True
    Index           =   -2147483648
    Indicator       =   0
@@ -24,19 +24,21 @@ Begin WebPage pgDemo
    Title           =   "Untitled"
    Top             =   0
    Visible         =   True
-   Width           =   600
+   Width           =   804
    _ImplicitInstance=   False
    _mDesignHeight  =   0
    _mDesignWidth   =   0
+   _mPanelIndex    =   -1
    Begin BootstrapWebButton btnTest
       AllowAutoDisable=   False
       Cancel          =   False
-      Caption         =   ""
+      Caption         =   "BootStrap button demo"
+      CaptionColor    =   &c00000000
       ControlID       =   ""
       Default         =   False
       Enabled         =   True
+      HasCaptionColor =   False
       HasIconColor    =   False
-      HasLabelColor   =   False
       Height          =   34
       IconColor       =   &c28CD4100
       IconName        =   "arrow-right"
@@ -45,23 +47,219 @@ Begin WebPage pgDemo
       Index           =   -2147483648
       Indicator       =   1
       IsVertical      =   False
-      Label           =   "Click me to change the icon!"
-      LabelColor      =   &c00000000
       LabelSize       =   0
-      Left            =   150
+      Left            =   51
       LockBottom      =   False
       LockedInPosition=   False
-      LockHorizontal  =   True
-      LockLeft        =   False
+      LockHorizontal  =   False
+      LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
       Scope           =   2
       TabIndex        =   0
       Tooltip         =   ""
-      Top             =   20
+      Top             =   29
       Visible         =   True
       Width           =   300
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton ReadCaptionBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Read"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   51
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      Tooltip         =   ""
+      Top             =   189
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton SetCaptionBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Set"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   140
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      Tooltip         =   ""
+      Top             =   189
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebTextField CaptionFld
+      AllowAutoComplete=   False
+      AllowSpellChecking=   False
+      Caption         =   ""
+      ControlID       =   ""
+      Enabled         =   True
+      FieldType       =   0
+      Height          =   38
+      Hint            =   ""
+      Index           =   -2147483648
+      Indicator       =   ""
+      Left            =   51
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      MaximumCharactersAllowed=   0
+      ReadOnly        =   False
+      Scope           =   2
+      TabIndex        =   2
+      Text            =   ""
+      TextAlignment   =   2
+      Tooltip         =   ""
+      Top             =   143
+      Visible         =   True
+      Width           =   240
+      _mPanelIndex    =   -1
+   End
+   Begin WebLabel Label1
+      Bold            =   False
+      ControlID       =   ""
+      Enabled         =   True
+      FontName        =   ""
+      FontSize        =   0.0
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   ""
+      Italic          =   False
+      Left            =   51
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Multiline       =   False
+      Scope           =   2
+      TabIndex        =   3
+      Text            =   "Caption"
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   104
+      Underline       =   False
+      Visible         =   True
+      Width           =   89
+      _mPanelIndex    =   -1
+   End
+   Begin WebLabel Label2
+      Bold            =   False
+      ControlID       =   ""
+      Enabled         =   True
+      FontName        =   ""
+      FontSize        =   0.0
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   ""
+      Italic          =   False
+      Left            =   51
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Multiline       =   False
+      Scope           =   2
+      TabIndex        =   3
+      Text            =   "Icon"
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   264
+      Underline       =   False
+      Visible         =   True
+      Width           =   89
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton SetIconAirFreshBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Fir"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   51
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      Tooltip         =   ""
+      Top             =   310
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton SetIconArrowBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Arrow"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   140
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      Tooltip         =   ""
+      Top             =   310
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
    End
 End
 #tag EndWebPage
@@ -72,12 +270,47 @@ End
 #tag Events btnTest
 	#tag Event
 		Sub Pressed()
-		  // Can now update after creation thanks to Tim Parnell :)
-		  me.IconName = "air-freshener"
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events ReadCaptionBtn
+	#tag Event
+		Sub Pressed()
+		  CaptionFld.Text = btnTest.Caption
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events SetCaptionBtn
+	#tag Event
+		Sub Pressed()
+		  btnTest.Caption = CaptionFld.Text
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events SetIconAirFreshBtn
+	#tag Event
+		Sub Pressed()
+		  btnTest.IconName = "air-freshener"
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events SetIconArrowBtn
+	#tag Event
+		Sub Pressed()
+		  btnTest.IconName = "arrow-right"
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag ViewBehavior
+	#tag ViewProperty
+		Name="_mPanelIndex"
+		Visible=false
+		Group="Behavior"
+		InitialValue="-1"
+		Type="Integer"
+		EditorType=""
+	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Index"
 		Visible=true

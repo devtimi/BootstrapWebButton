@@ -3,11 +3,14 @@ Protected Class BootstrapWebButton
 Inherits WebButton
 	#tag Event
 		Sub Opening()
+		  
 		  // Load FontAwesome
 		  if me.NeedsFontAwesome then
 		    LoadFontAwesome
-		    
 		  end
+		  
+		  // Indicate constructor has finished and rendering can be executed
+		  me.HasFinishedConstructor = true
 		  
 		  // Render the raw caption
 		  RenderRawCaption
@@ -17,6 +20,21 @@ Inherits WebButton
 		End Sub
 	#tag EndEvent
 
+
+	#tag Method, Flags = &h0
+		Function Caption() As string
+		  // Shadow the parent property and return the internal label
+		  return me.Label
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub Caption(assigns value as string)
+		  // Shadow the parent property and assign to the internal label
+		  me.Label = value
+		  RenderRawCaption
+		End Sub
+	#tag EndMethod
 
 	#tag Method, Flags = &h21
 		Private Function GetFontAwesomeClassPrefix() As String
@@ -48,7 +66,7 @@ Inherits WebButton
 
 	#tag Method, Flags = &h0
 		Function HasCaption() As Boolean
-		  return (me.Caption <> "")
+		  return (me.mLabel <> "")
 		End Function
 	#tag EndMethod
 
@@ -89,6 +107,10 @@ Inherits WebButton
 
 	#tag Method, Flags = &h21
 		Private Sub RenderRawCaption()
+		  // Wait until the constructor is finished before rendering
+		  // Otherwise each property set in the IDE will trigger rendering
+		  if not me.HasFinishedConstructor then return
+		  
 		  // Render the <raw> caption
 		  var tarsRaw() as string
 		  
@@ -120,7 +142,7 @@ Inherits WebButton
 		      tarsStyle.AddRow(tsOffset)
 		      
 		      // Color options
-		      var tcRequest as Color = me.LabelColor
+		      var tcRequest as Color = me.CaptionColor
 		      if me.HasIconColor then
 		        tcRequest = me.IconColor
 		        
@@ -187,8 +209,8 @@ Inherits WebButton
 		      
 		    end
 		    
-		    if me.HasLabelColor then
-		      tarsStyle.AddRow("color: " + rgba(me.LabelColor))
+		    if me.HasCaptionColor then
+		      tarsStyle.AddRow("color: " + rgba(me.CaptionColor))
 		      
 		    end
 		    
@@ -199,7 +221,7 @@ Inherits WebButton
 		  end if
 		  
 		  // Final <raw> statement
-		  me.Caption = "<raw>" + String.FromArray(tarsRaw, "") + "</raw>"
+		  webButton(self).Caption = "<raw>" + String.FromArray(tarsRaw, "") + "</raw>"
 		  
 		  
 		  
@@ -268,8 +290,8 @@ Inherits WebButton
 		
 		This class is distributed as "beerware". If you find this class useful and want
 		to express your gratitude, buy us a beer at the next Xojo conference or send a 
-		ew dollars through PayPal at bruno@newmood.com. If you do, I'll send you a picture
-		of the beer I drank with your donation.
+		few dollars to one of the developers. If you do, we'll send you a picture
+		of the beer we drank with your donation.
 		
 		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 		INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -283,34 +305,19 @@ Inherits WebButton
 	#tag EndNote
 
 
-	#tag ComputedProperty, Flags = &h21
-		#tag Getter
-			Get
-			  return WebButton(self).Caption
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  // Prevent Xojo Developers from setting the caption
-			  WebButton(self).Caption = value
-			End Set
-		#tag EndSetter
-		Private Caption As String
-	#tag EndComputedProperty
-
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mHasIconColor
+			  Return mCaptionColor
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mHasIconColor = value
+			  mCaptionColor = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
-		HasIconColor As Boolean
+		CaptionColor As Color
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -325,7 +332,26 @@ Inherits WebButton
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
-		HasLabelColor As Boolean
+		HasCaptionColor As Boolean
+	#tag EndComputedProperty
+
+	#tag Property, Flags = &h21
+		Private HasFinishedConstructor As Boolean
+	#tag EndProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mHasIconColor
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mHasIconColor = value
+			  RenderRawCaption
+			End Set
+		#tag EndSetter
+		HasIconColor As Boolean
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -403,7 +429,7 @@ Inherits WebButton
 		IsVertical As Boolean
 	#tag EndComputedProperty
 
-	#tag ComputedProperty, Flags = &h0
+	#tag ComputedProperty, Flags = &h21
 		#tag Getter
 			Get
 			  Return mLabel
@@ -415,22 +441,7 @@ Inherits WebButton
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
-		Label As String
-	#tag EndComputedProperty
-
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			  Return mCaptionColor
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  mCaptionColor = value
-			  RenderRawCaption
-			End Set
-		#tag EndSetter
-		LabelColor As Color
+		Private Label As String
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -637,12 +648,12 @@ Inherits WebButton
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="TabIndex"
+			Name="Caption"
 			Visible=true
-			Group="Visual Controls"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
+			Group="Button"
+			InitialValue="Untitled"
+			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="AllowAutoDisable"
@@ -661,28 +672,12 @@ Inherits WebButton
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Caption"
-			Visible=false
-			Group="Button"
-			InitialValue=""
-			Type="String"
-			EditorType="String"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="Default"
 			Visible=true
 			Group="Button"
 			InitialValue="False"
 			Type="Boolean"
 			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Label"
-			Visible=true
-			Group="Button"
-			InitialValue=""
-			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="LabelSize"
@@ -693,7 +688,7 @@ Inherits WebButton
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="HasLabelColor"
+			Name="HasCaptionColor"
 			Visible=true
 			Group="Button"
 			InitialValue=""
@@ -701,7 +696,7 @@ Inherits WebButton
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LabelColor"
+			Name="CaptionColor"
 			Visible=true
 			Group="Button"
 			InitialValue="&c000000"
@@ -763,6 +758,22 @@ Inherits WebButton
 			Group="Button"
 			InitialValue=""
 			Type="Boolean"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="TabIndex"
+			Visible=true
+			Group="Visual Controls"
+			InitialValue=""
+			Type="Integer"
+			EditorType=""
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="_mPanelIndex"
+			Visible=false
+			Group="Behavior"
+			InitialValue="-1"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
