@@ -10,7 +10,7 @@ Inherits WebButton
 		  end
 		  
 		  // Indicate constructor has finished and rendering can be executed
-		  me.HasFinishedConstructor = true
+		  me.mbHasFinishedConstructor = true
 		  
 		  // Render the raw caption
 		  RenderRawCaption
@@ -109,7 +109,7 @@ Inherits WebButton
 		Private Sub RenderRawCaption()
 		  // Wait until the constructor is finished before rendering
 		  // Otherwise each property set in the IDE will trigger rendering
-		  if not me.HasFinishedConstructor then return
+		  if not me.mbHasFinishedConstructor then return
 		  
 		  // Render the <raw> caption
 		  var tarsRaw() as string
@@ -335,10 +335,6 @@ Inherits WebButton
 		HasCaptionColor As Boolean
 	#tag EndComputedProperty
 
-	#tag Property, Flags = &h21
-		Private HasFinishedConstructor As Boolean
-	#tag EndProperty
-
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
@@ -458,6 +454,10 @@ Inherits WebButton
 		#tag EndSetter
 		LabelSize As integer
 	#tag EndComputedProperty
+
+	#tag Property, Flags = &h21
+		Private mbHasFinishedConstructor As Boolean
+	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private mbLoadedFontAwesome As Boolean
