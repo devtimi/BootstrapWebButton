@@ -204,8 +204,8 @@ Inherits WebButton
 		  if me.HasCaption then
 		    var tarsStyle() as String
 		    
-		    if me.LabelSize > 0 then
-		      tarsStyle.AddRow("font-size: " + me.LabelSize.ToString + "px;")
+		    if me.CaptionSize > 0 then
+		      tarsStyle.AddRow("font-size: " + me.CaptionSize.ToString + "px;")
 		      
 		    end
 		    
@@ -341,6 +341,21 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  Return mCaptionSize
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCaptionSize = value
+			  RenderRawCaption
+			End Set
+		#tag EndSetter
+		CaptionSize As integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return mHasCaptionColor
 			End Get
 		#tag EndGetter
@@ -471,21 +486,6 @@ Inherits WebButton
 			End Set
 		#tag EndSetter
 		Private Label As String
-	#tag EndComputedProperty
-
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			  Return mCaptionSize
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  mCaptionSize = value
-			  RenderRawCaption
-			End Set
-		#tag EndSetter
-		LabelSize As integer
 	#tag EndComputedProperty
 
 	#tag Property, Flags = &h21
@@ -736,7 +736,7 @@ Inherits WebButton
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LabelSize"
+			Name="CaptionSize"
 			Visible=true
 			Group="Button"
 			InitialValue=""
