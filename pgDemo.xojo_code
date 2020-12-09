@@ -4,7 +4,7 @@ Begin WebPage pgDemo
    Compatibility   =   ""
    ControlID       =   ""
    Enabled         =   False
-   Height          =   520
+   Height          =   742
    ImplicitInstance=   True
    Index           =   -2147483648
    Indicator       =   0
@@ -24,7 +24,7 @@ Begin WebPage pgDemo
    Title           =   "Untitled"
    Top             =   0
    Visible         =   True
-   Width           =   804
+   Width           =   762
    _ImplicitInstance=   False
    _mDesignHeight  =   0
    _mDesignWidth   =   0
@@ -39,7 +39,8 @@ Begin WebPage pgDemo
       Enabled         =   True
       HasCaptionColor =   False
       HasIconColor    =   False
-      Height          =   34
+      Height          =   39
+      HorizontalAlign =   0
       IconColor       =   &c28CD4100
       IconName        =   "arrow-right"
       IconSize        =   0
@@ -59,7 +60,7 @@ Begin WebPage pgDemo
       Scope           =   2
       TabIndex        =   0
       Tooltip         =   ""
-      Top             =   29
+      Top             =   20
       Visible         =   True
       Width           =   300
       _mPanelIndex    =   -1
@@ -85,7 +86,7 @@ Begin WebPage pgDemo
       Scope           =   2
       TabIndex        =   1
       Tooltip         =   ""
-      Top             =   189
+      Top             =   215
       Visible         =   True
       Width           =   81
       _mPanelIndex    =   -1
@@ -111,7 +112,7 @@ Begin WebPage pgDemo
       Scope           =   2
       TabIndex        =   1
       Tooltip         =   ""
-      Top             =   189
+      Top             =   215
       Visible         =   True
       Width           =   81
       _mPanelIndex    =   -1
@@ -142,7 +143,7 @@ Begin WebPage pgDemo
       Text            =   ""
       TextAlignment   =   2
       Tooltip         =   ""
-      Top             =   143
+      Top             =   169
       Visible         =   True
       Width           =   240
       _mPanelIndex    =   -1
@@ -172,7 +173,7 @@ Begin WebPage pgDemo
       TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
-      Top             =   104
+      Top             =   130
       Underline       =   False
       Visible         =   True
       Width           =   89
@@ -188,7 +189,7 @@ Begin WebPage pgDemo
       Index           =   -2147483648
       Indicator       =   ""
       Italic          =   False
-      Left            =   51
+      Left            =   56
       LockBottom      =   False
       LockedInPosition=   False
       LockHorizontal  =   False
@@ -203,7 +204,7 @@ Begin WebPage pgDemo
       TextAlignment   =   0
       TextColor       =   &c00000000
       Tooltip         =   ""
-      Top             =   264
+      Top             =   280
       Underline       =   False
       Visible         =   True
       Width           =   89
@@ -230,7 +231,7 @@ Begin WebPage pgDemo
       Scope           =   2
       TabIndex        =   1
       Tooltip         =   ""
-      Top             =   310
+      Top             =   315
       Visible         =   True
       Width           =   81
       _mPanelIndex    =   -1
@@ -256,9 +257,174 @@ Begin WebPage pgDemo
       Scope           =   2
       TabIndex        =   1
       Tooltip         =   ""
-      Top             =   310
+      Top             =   315
       Visible         =   True
       Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebLabel Label3
+      Bold            =   False
+      ControlID       =   ""
+      Enabled         =   True
+      FontName        =   ""
+      FontSize        =   0.0
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   ""
+      Italic          =   False
+      Left            =   56
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Multiline       =   False
+      Scope           =   2
+      TabIndex        =   3
+      Text            =   "Horizontal alignment"
+      TextAlignment   =   0
+      TextColor       =   &c00000000
+      Tooltip         =   ""
+      Top             =   390
+      Underline       =   False
+      Visible         =   True
+      Width           =   304
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton AlignLeftBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Left"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   56
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   429
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton AlignDefaultBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Default"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   145
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   429
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton AlignRightBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "Right"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   234
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   429
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebButton SetIconNoneBtn
+      AllowAutoDisable=   False
+      Cancel          =   False
+      Caption         =   "None"
+      ControlID       =   ""
+      Default         =   False
+      Enabled         =   True
+      Height          =   38
+      Index           =   -2147483648
+      Indicator       =   0
+      Left            =   229
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   1
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   315
+      Visible         =   True
+      Width           =   81
+      _mPanelIndex    =   -1
+   End
+   Begin WebCheckbox IsVerticalChk
+      Caption         =   "Is Vertical"
+      ControlID       =   ""
+      Enabled         =   True
+      Height          =   34
+      Indeterminate   =   False
+      Index           =   -2147483648
+      Indicator       =   ""
+      Left            =   51
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockHorizontal  =   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      LockVertical    =   False
+      Scope           =   2
+      TabIndex        =   4
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   504
+      Value           =   False
+      Visible         =   True
+      Width           =   100
       _mPanelIndex    =   -1
    End
 End
@@ -299,6 +465,46 @@ End
 	#tag Event
 		Sub Pressed()
 		  btnTest.IconName = "arrow-right"
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events AlignLeftBtn
+	#tag Event
+		Sub Pressed()
+		  btnTest.HorizontalAlign = BootstrapWebButton.eHorizontalAlignments.Left
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events AlignDefaultBtn
+	#tag Event
+		Sub Pressed()
+		  btnTest.HorizontalAlign = BootstrapWebButton.eHorizontalAlignments.Default
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events AlignRightBtn
+	#tag Event
+		Sub Pressed()
+		  btnTest.HorizontalAlign = BootstrapWebButton.eHorizontalAlignments.Right
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events SetIconNoneBtn
+	#tag Event
+		Sub Pressed()
+		  btnTest.IconName = ""
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events IsVerticalChk
+	#tag Event
+		Sub Opening()
+		  me.Value = btnTest.IsVertical
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub ValueChanged()
+		  btnTest.IsVertical = me.Value
 		End Sub
 	#tag EndEvent
 #tag EndEvents
