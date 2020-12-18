@@ -3,10 +3,10 @@ Protected Class BootstrapWebButton
 Inherits WebButton
 	#tag Event
 		Sub Opening()
-		  
 		  // Load FontAwesome
 		  if me.NeedsFontAwesome then
 		    LoadFontAwesome
+		    
 		  end
 		  
 		  // Indicate constructor has finished and rendering can be executed
@@ -22,16 +22,16 @@ Inherits WebButton
 
 
 	#tag Method, Flags = &h0
-		Function Caption() As string
+		Function Caption() As String
 		  // Shadow the parent property and return the internal label
-		  return me.Label
+		  return me.msLabel
 		End Function
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub Caption(assigns value as string)
+		Sub Caption(assigns sValue as String)
 		  // Shadow the parent property and assign to the internal label
-		  me.Label = value
+		  msLabel = sValue
 		  RenderRawCaption
 		End Sub
 	#tag EndMethod
@@ -66,7 +66,7 @@ Inherits WebButton
 
 	#tag Method, Flags = &h0
 		Function HasCaption() As Boolean
-		  return (me.mLabel <> "")
+		  return (me.msLabel <> "")
 		End Function
 	#tag EndMethod
 
@@ -184,7 +184,7 @@ Inherits WebButton
 		      
 		    end select
 		    
-		  end if
+		  end
 		  
 		  // ICON + CAPTION
 		  if me.HasCaption and me.HasIcon then
@@ -216,12 +216,12 @@ Inherits WebButton
 		    
 		    // Build final caption
 		    var tsStyle as String = String.FromArray(tarsStyle, "")
-		    tarsRaw.AddRow("<span style=""" + tsStyle + """>" + me.Label + "</span>")
+		    tarsRaw.AddRow("<span style=""" + tsStyle + """>" + me.msLabel + "</span>")
 		    
-		  end if
+		  end
 		  
 		  // Final <raw> statement
-		  webButton(self).Caption = "<raw>" + String.FromArray(tarsRaw, "") + "</raw>"
+		  WebButton(self).Caption = "<raw>" + String.FromArray(tarsRaw, "") + "</raw>"
 		  
 		  
 		  // Button horizontal alignment
@@ -323,12 +323,12 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mCaptionColor
+			  return mcCaptionColor
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mCaptionColor = value
+			  mcCaptionColor = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
@@ -338,27 +338,27 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mCaptionSize
+			  return miCaptionSize
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mCaptionSize = value
+			  miCaptionSize = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
-		CaptionSize As integer
+		CaptionSize As Integer
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mHasCaptionColor
+			  return mbHasCaptionColor
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mHasCaptionColor = value
+			  mbHasCaptionColor = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
@@ -368,12 +368,12 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mHasIconColor
+			  return mbHasIconColor
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mHasIconColor = value
+			  mbHasIconColor = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
@@ -398,12 +398,12 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mIconColor
+			  return mcIconColor
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mIconColor = value
+			  mcIconColor = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
@@ -413,27 +413,27 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mIconName
+			  return msIconName
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mIconName = value
+			  msIconName = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
-		IconName As string
+		IconName As String
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mIconSize
+			  return miIconSize
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mIconSize = value
+			  miIconSize = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
@@ -443,12 +443,12 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mIconType
+			  return meIconType
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mIconType = value
+			  meIconType = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
@@ -458,35 +458,32 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mIsVertical
+			  return mbIsVertical
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mIsVertical = value
+			  mbIsVertical = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
 		IsVertical As Boolean
 	#tag EndComputedProperty
 
-	#tag ComputedProperty, Flags = &h21
-		#tag Getter
-			Get
-			  Return mLabel
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  mLabel = value
-			  RenderRawCaption
-			End Set
-		#tag EndSetter
-		Private Label As String
-	#tag EndComputedProperty
+	#tag Property, Flags = &h21
+		Private mbHasCaptionColor As Boolean
+	#tag EndProperty
 
 	#tag Property, Flags = &h21
 		Private mbHasFinishedConstructor As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mbHasIconColor As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mbIsVertical As Boolean = False
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -494,54 +491,42 @@ Inherits WebButton
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mCaptionColor As color
+		Private mcCaptionColor As Color
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mCaptionSize As integer
+		Private mcIconColor As Color = &C00000000
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mHasCaptionColor As Boolean
+		Private meHorizontalAlign As TextAlignments
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mHasIconColor As Boolean
+		Private meIconType As eIconTypes
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mHorizontalAlign As eHorizontalAlignments
+		Private miCaptionSize As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mIconColor As Color = &C00000000
+		Private miIconSize As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mIconName As string
+		Private msIconName As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
-		Private mIconSize As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private mIconType As eIconTypes
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private mIsVertical As Boolean = false
-	#tag EndProperty
-
-	#tag Property, Flags = &h21
-		Private mLabel As String
+		Private msLabel As String
 	#tag EndProperty
 
 
 	#tag Constant, Name = kFontAwesomeLoadJS, Type = String, Dynamic = False, Default = \"var tsFontAwesomeButtonID \x3D \'BootstrapWebButtonFAID\';\n\nif (!document.getElementById(tsFontAwesomeButtonID)) {\n    var toHead  \x3D document.getElementsByTagName(\'head\')[0];\n    var toCSS  \x3D document.createElement(\'link\');\n    toCSS.id   \x3D tsFontAwesomeButtonID;\n    toCSS.rel  \x3D \'stylesheet\';\n    toCSS.type \x3D \'text/css\';\n    toCSS.href \x3D \'//use.fontawesome.com/releases/v5.15.1/css/all.css\';\n    toCSS.media \x3D \'all\';\n    \n    toHead.appendChild(toCSS);\n    \n}", Scope = Private
 	#tag EndConstant
 
-	#tag Constant, Name = kVersion, Type = Double, Dynamic = False, Default = \"1.1", Scope = Public
+	#tag Constant, Name = kVersion, Type = Double, Dynamic = False, Default = \"1.2", Scope = Public
 	#tag EndConstant
 
 
