@@ -294,7 +294,7 @@ Begin WebContainer ccDemo
       Height          =   38
       Hint            =   ""
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Left            =   20
       LockBottom      =   False
       LockedInPosition=   False
@@ -325,7 +325,7 @@ Begin WebContainer ccDemo
       FontSize        =   0.0
       Height          =   38
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Italic          =   False
       Left            =   20
       LockBottom      =   False
@@ -358,7 +358,7 @@ Begin WebContainer ccDemo
       FontSize        =   0.0
       Height          =   38
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Italic          =   False
       Left            =   25
       LockBottom      =   False
@@ -391,7 +391,7 @@ Begin WebContainer ccDemo
       FontSize        =   0.0
       Height          =   38
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Italic          =   False
       Left            =   25
       LockBottom      =   False
@@ -423,7 +423,7 @@ Begin WebContainer ccDemo
       Height          =   34
       Indeterminate   =   False
       Index           =   -2147483648
-      indicator       =   0
+      Indicator       =   0
       Left            =   20
       LockBottom      =   False
       LockedInPosition=   False
@@ -487,21 +487,21 @@ End
 #tag Events AlignLeftBtn
 	#tag Event
 		Sub Pressed()
-		  btnTest.HorizontalAlign = BootstrapWebButton.eHorizontalAlignments.Left
+		  btnTest.HorizontalAlign = TextAlignments.Left
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events AlignDefaultBtn
 	#tag Event
 		Sub Pressed()
-		  btnTest.HorizontalAlign = BootstrapWebButton.eHorizontalAlignments.Default
+		  btnTest.HorizontalAlign = TextAlignments.Default
 		End Sub
 	#tag EndEvent
 #tag EndEvents
 #tag Events AlignRightBtn
 	#tag Event
 		Sub Pressed()
-		  btnTest.HorizontalAlign = BootstrapWebButton.eHorizontalAlignments.Right
+		  btnTest.HorizontalAlign = TextAlignments.Right
 		End Sub
 	#tag EndEvent
 #tag EndEvents

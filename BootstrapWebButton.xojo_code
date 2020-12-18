@@ -226,20 +226,17 @@ Inherits WebButton
 		  
 		  // Button horizontal alignment
 		  select case me.HorizontalAlign
-		  case eHorizontalAlignments.Left
+		  case TextAlignments.Left
+		    me.Style.Value("display") = "inline"
+		    me.Style.Value("text-align") = "left"
 		    
-		    Me.Style.Value("display") = "inline"
-		    Me.Style.Value("text-align") = "left"
-		    
-		  case eHorizontalAlignments.Right
-		    
-		    Me.Style.Value("display") = "inline"
-		    Me.Style.Value("text-align") = "right"
+		  case TextAlignments.Right
+		    me.Style.Value("display") = "inline"
+		    me.Style.Value("text-align") = "right"
 		    
 		  else
-		    
-		    Me.Style.Value("display") = ""
-		    Me.Style.Value("text-align") = ""
+		    me.Style.Value("display") = ""
+		    me.Style.Value("text-align") = ""
 		    
 		  end select
 		  
@@ -386,16 +383,16 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
-			  Return mHorizontalAlign
+			  return meHorizontalAlign
 			End Get
 		#tag EndGetter
 		#tag Setter
 			Set
-			  mHorizontalAlign = value
+			  meHorizontalAlign = value
 			  RenderRawCaption
 			End Set
 		#tag EndSetter
-		HorizontalAlign As eHorizontalAlignments
+		HorizontalAlign As TextAlignments
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
