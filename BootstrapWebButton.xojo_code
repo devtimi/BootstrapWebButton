@@ -193,8 +193,8 @@ Inherits WebButton
 		      tarsRaw.AddRow("<br>")
 		      
 		    else
-		      // Add a horizontal space between the icon and the text
-		      tarsRaw.AddRow(" ")
+		      // Add a non-breaking horizontal space between the icon and the text
+		      tarsRaw.AddRow("&nbsp;")
 		      
 		    end
 		    
@@ -204,8 +204,8 @@ Inherits WebButton
 		  if me.HasCaption then
 		    var tarsStyle() as String
 		    
-		    if me.LabelSize > 0 then
-		      tarsStyle.AddRow("font-size: " + me.LabelSize.ToString + "px;")
+		    if me.CaptionSize > 0 then
+		      tarsStyle.AddRow("font-size: " + me.CaptionSize.ToString + "px;")
 		      
 		    end
 		    
@@ -224,6 +224,24 @@ Inherits WebButton
 		  webButton(self).Caption = "<raw>" + String.FromArray(tarsRaw, "") + "</raw>"
 		  
 		  
+		  // Button horizontal alignment
+		  select case me.HorizontalAlign
+		  case eHorizontalAlignments.Left
+		    
+		    Me.Style.Value("display") = "inline"
+		    Me.Style.Value("text-align") = "left"
+		    
+		  case eHorizontalAlignments.Right
+		    
+		    Me.Style.Value("display") = "inline"
+		    Me.Style.Value("text-align") = "right"
+		    
+		  else
+		    
+		    Me.Style.Value("display") = ""
+		    Me.Style.Value("text-align") = ""
+		    
+		  end select
 		  
 		End Sub
 	#tag EndMethod
@@ -323,6 +341,21 @@ Inherits WebButton
 	#tag ComputedProperty, Flags = &h0
 		#tag Getter
 			Get
+			  Return mCaptionSize
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mCaptionSize = value
+			  RenderRawCaption
+			End Set
+		#tag EndSetter
+		CaptionSize As integer
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
 			  Return mHasCaptionColor
 			End Get
 		#tag EndGetter
@@ -348,6 +381,21 @@ Inherits WebButton
 			End Set
 		#tag EndSetter
 		HasIconColor As Boolean
+	#tag EndComputedProperty
+
+	#tag ComputedProperty, Flags = &h0
+		#tag Getter
+			Get
+			  Return mHorizontalAlign
+			End Get
+		#tag EndGetter
+		#tag Setter
+			Set
+			  mHorizontalAlign = value
+			  RenderRawCaption
+			End Set
+		#tag EndSetter
+		HorizontalAlign As eHorizontalAlignments
 	#tag EndComputedProperty
 
 	#tag ComputedProperty, Flags = &h0
@@ -440,21 +488,6 @@ Inherits WebButton
 		Private Label As String
 	#tag EndComputedProperty
 
-	#tag ComputedProperty, Flags = &h0
-		#tag Getter
-			Get
-			  Return mCaptionSize
-			End Get
-		#tag EndGetter
-		#tag Setter
-			Set
-			  mCaptionSize = value
-			  RenderRawCaption
-			End Set
-		#tag EndSetter
-		LabelSize As integer
-	#tag EndComputedProperty
-
 	#tag Property, Flags = &h21
 		Private mbHasFinishedConstructor As Boolean
 	#tag EndProperty
@@ -477,6 +510,10 @@ Inherits WebButton
 
 	#tag Property, Flags = &h21
 		Private mHasIconColor As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private mHorizontalAlign As eHorizontalAlignments
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
@@ -510,6 +547,12 @@ Inherits WebButton
 	#tag Constant, Name = kVersion, Type = Double, Dynamic = False, Default = \"1.1", Scope = Public
 	#tag EndConstant
 
+
+	#tag Enum, Name = eHorizontalAlignments, Flags = &h0
+		Default
+		  Left
+		Right
+	#tag EndEnum
 
 	#tag Enum, Name = eIconTypes, Type = Integer, Flags = &h0
 		None
@@ -656,6 +699,19 @@ Inherits WebButton
 			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
+			Name="HorizontalAlign"
+			Visible=true
+			Group="Button"
+			InitialValue=""
+			Type="eHorizontalAlignments"
+			EditorType="Enum"
+			#tag EnumValues
+				"0 - Default"
+				"1 - Left"
+				"2 - Right"
+			#tag EndEnumValues
+		#tag EndViewProperty
+		#tag ViewProperty
 			Name="AllowAutoDisable"
 			Visible=true
 			Group="Button"
@@ -680,7 +736,7 @@ Inherits WebButton
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="LabelSize"
+			Name="CaptionSize"
 			Visible=true
 			Group="Button"
 			InitialValue=""
