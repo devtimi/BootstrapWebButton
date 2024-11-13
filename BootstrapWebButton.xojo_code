@@ -123,15 +123,15 @@ Inherits WebButton
 		Function NeedsFontAwesome() As Boolean
 		  // Return a boolean indicating whether or not this button needs to load FontAwesome
 		  // Public method because it's informative
-		  var tbIsFontAwesome as Boolean
+		  var bIsFontAwesome as Boolean
 		  
-		  tbIsFontAwesome = tbIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Brands)
-		  tbIsFontAwesome = tbIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Duotone)
-		  tbIsFontAwesome = tbIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Light)
-		  tbIsFontAwesome = tbIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Regular)
-		  tbIsFontAwesome = tbIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Solid)
+		  bIsFontAwesome = bIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Brands)
+		  bIsFontAwesome = bIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Duotone)
+		  bIsFontAwesome = bIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Light)
+		  bIsFontAwesome = bIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Regular)
+		  bIsFontAwesome = bIsFontAwesome or (me.IconType = eIconTypes.FontAwesome5_Solid)
 		  
-		  return tbIsFontAwesome
+		  return bIsFontAwesome
 		End Function
 	#tag EndMethod
 
@@ -142,12 +142,12 @@ Inherits WebButton
 		  if not me.mbHasFinishedConstructor then return
 		  
 		  // Render the <raw> caption
-		  var tarsRaw() as string
+		  var arsRaw() as string
 		  
 		  // Add Icon
 		  if me.HasIcon then
 		    // Inspired by work from Brock Nash<3
-		    var tarsStyle() as String
+		    var arsStyle() as String
 		    
 		    select case me.IconType
 		    case eIconTypes.Bootstrap
@@ -159,35 +159,35 @@ Inherits WebButton
 		      end
 		      
 		      var sIcon as String = GetBootstrapIcon(me.IconName, me.IconSize, cRequest)
-		      tarsRaw.AddRow("<span style=""vertical-align:0.8pt"">" + sIcon + "</span>")
+		      arsRaw.AddRow("<span style=""vertical-align:0.8pt"">" + sIcon + "</span>")
 		      
 		    case eIconTypes.FontAwesome5_Brands, eIconTypes.FontAwesome5_Duotone, _
 		      eIconTypes.FontAwesome5_Light, eIconTypes.FontAwesome5_Regular, _
 		      eIconTypes.FontAwesome5_Solid
 		      // FontAwesome 5 icon
-		      var tsClass as String = GetFontAwesomeClassPrefix + me.IconName
+		      var sClass as String = GetFontAwesomeClassPrefix + me.IconName
 		      
 		      if me.HasIconColor then
-		        tarsStyle.AddRow("color: " + rgba(IconColor))
+		        arsStyle.AddRow("color: " + rgba(IconColor))
 		        
 		      end
 		      
 		      if me.IconSize > 0 then
-		        tarsStyle.AddRow("font-size: " + me.IconSize.ToString + "px;")
+		        arsStyle.AddRow("font-size: " + me.IconSize.ToString + "px;")
 		        
 		        // Calculate an additional vertical margin because it's not adjusted automatically for larger sizes
 		        // Only for vertical alignment - horizontal align is made on the object width in the ide
 		        if me.IsVertical and  me.IconSize > 8 then
-		          var tiMargin as Integer = me.IconSize \ 4
-		          tarsStyle.AddRow("margin: " + tiMargin.ToString + "px 0;")
+		          var iMargin as Integer = me.IconSize \ 4
+		          arsStyle.AddRow("margin: " + iMargin.ToString + "px 0;")
 		          
 		        end
 		        
 		      end
 		      
 		      // Build final icon tag
-		      var tsStyle as String = String.FromArray(tarsStyle, "")
-		      tarsRaw.AddRow("<span class=""" + tsClass + """ style=""" + tsStyle + """></span>")
+		      var sStyle as String = String.FromArray(arsStyle, "")
+		      arsRaw.AddRow("<span class=""" + sClass + """ style=""" + sStyle + """></span>")
 		      
 		    end select
 		    
@@ -197,11 +197,11 @@ Inherits WebButton
 		  if me.HasCaption and me.HasIcon then
 		    if me.IsVertical then
 		      // Add a line break for vertical alignment
-		      tarsRaw.AddRow("<br>")
+		      arsRaw.AddRow("<br>")
 		      
 		    else
 		      // Add a non-breaking horizontal space between the icon and the text
-		      tarsRaw.AddRow("&nbsp;")
+		      arsRaw.AddRow("&nbsp;")
 		      
 		    end
 		    
@@ -209,26 +209,26 @@ Inherits WebButton
 		  
 		  // CAPTION
 		  if me.HasCaption then
-		    var tarsStyle() as String
+		    var arsStyle() as String
 		    
 		    if me.CaptionSize > 0 then
-		      tarsStyle.AddRow("font-size: " + me.CaptionSize.ToString + "px;")
+		      arsStyle.AddRow("font-size: " + me.CaptionSize.ToString + "px;")
 		      
 		    end
 		    
 		    if me.HasCaptionColor then
-		      tarsStyle.AddRow("color: " + rgba(me.CaptionColor))
+		      arsStyle.AddRow("color: " + rgba(me.CaptionColor))
 		      
 		    end
 		    
 		    // Build final caption
-		    var tsStyle as String = String.FromArray(tarsStyle, "")
-		    tarsRaw.AddRow("<span style=""" + tsStyle + """>" + me.msLabel + "</span>")
+		    var sStyle as String = String.FromArray(arsStyle, "")
+		    arsRaw.AddRow("<span style=""" + sStyle + """>" + me.msLabel + "</span>")
 		    
 		  end
 		  
 		  // Final <raw> statement
-		  WebButton(self).Caption = "<raw>" + String.FromArray(tarsRaw, "") + "</raw>"
+		  WebButton(self).Caption = "<raw>" + String.FromArray(arsRaw, "") + "</raw>"
 		  
 		  
 		  // Button horizontal alignment
@@ -253,14 +253,14 @@ Inherits WebButton
 	#tag Method, Flags = &h21
 		Private Function rgba(tcTarget as Color) As String
 		  // Convert transparency from 0-255 (255=transparent) to 0-1 (0=transparent)
-		  var tdAlpha as Double = (255 - tcTarget.Alpha) / 255
+		  var dAlpha as Double = (255 - tcTarget.Alpha) / 255
 		  
 		  // Return CSS rgba string from Xojo color
-		  var tsRGBA as String = "rgba(" + tcTarget.Red.ToString + _
+		  var sRGBA as String = "rgba(" + tcTarget.Red.ToString + _
 		  ", " + tcTarget.Green.ToString + ", " + tcTarget.Blue.ToString + _
-		  ", " + tdAlpha.ToString("#.##") + ");"
+		  ", " + dAlpha.ToString("#.##") + ");"
 		  
-		  return tsRGBA
+		  return sRGBA
 		End Function
 	#tag EndMethod
 
@@ -530,7 +530,7 @@ Inherits WebButton
 	#tag EndProperty
 
 
-	#tag Constant, Name = kFontAwesomeLoadJS, Type = String, Dynamic = False, Default = \"var tsFontAwesomeButtonID \x3D \'BootstrapWebButtonFAID\';\n\nif (!document.getElementById(tsFontAwesomeButtonID)) {\n    var toHead  \x3D document.getElementsByTagName(\'head\')[0];\n    var toCSS  \x3D document.createElement(\'link\');\n    toCSS.id   \x3D tsFontAwesomeButtonID;\n    toCSS.rel  \x3D \'stylesheet\';\n    toCSS.type \x3D \'text/css\';\n    toCSS.href \x3D \'//use.fontawesome.com/releases/v5.15.1/css/all.css\';\n    toCSS.media \x3D \'all\';\n    \n    toHead.appendChild(toCSS);\n    \n}", Scope = Private
+	#tag Constant, Name = kFontAwesomeLoadJS, Type = String, Dynamic = False, Default = \"var sFontAwesomeButtonID \x3D \'BootstrapWebButtonFAID\';\n\nif (!document.getElementById(sFontAwesomeButtonID)) {\n    var oHead  \x3D document.getElementsByTagName(\'head\')[0];\n    var oCSS  \x3D document.createElement(\'link\');\n    oCSS.id   \x3D sFontAwesomeButtonID;\n    oCSS.rel  \x3D \'stylesheet\';\n    oCSS.type \x3D \'text/css\';\n    oCSS.href \x3D \'//use.fontawesome.com/releases/v5.15.1/css/all.css\';\n    oCSS.media \x3D \'all\';\n    \n    oHead.appendChild(oCSS);\n    \n}", Scope = Private
 	#tag EndConstant
 
 	#tag Constant, Name = kVersion, Type = Double, Dynamic = False, Default = \"1.2", Scope = Public
