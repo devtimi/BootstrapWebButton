@@ -37,6 +37,23 @@ Inherits WebButton
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
+		Private Function GetBootstrapIcon(pName As String, pSize As Integer = 16, pColor As Color = Color.Black) As String
+		  var icon as String = WebPicture.BootstrapIcon(pName, pColor).Data
+		  
+		  Var regex As New Regex()
+		  regex.SearchPattern = "(width|height)=""(\d+)"""
+		  
+		  Var replacementPtn As String = "\1=""[iconSize]"""
+		  replacementPtn = replacementPtn.Replace("[iconSize]", pSize.ToString())
+		  
+		  regex.ReplacementPattern = replacementPtn
+		  regex.Options.ReplaceAllMatches = True
+		  
+		  Return regex.Replace(icon)
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
 		Private Function GetFontAwesomeClassPrefix() As String
 		  // Font Awesome 5 groups the icons in different classes
 		  select case IconType
@@ -121,38 +138,18 @@ Inherits WebButton
 		    
 		    select case me.IconType
 		    case eIconTypes.Bootstrap
-		      // WebPicture.BootstrapIcon(IconName, IconColor).Data
-		      // will give us a <svg> object to insert
-		      
-		      // Icon ends up very low without this
-		      tarsStyle.AddRow("position: inherit")
-		      
-		      // Vertical offset
-		      var tsOffset as String = "-2"
-		      
-		      if me.IconSize > 0 then
-		        tarsStyle.AddRow("font-size: " + me.IconSize.ToString + "px;")
-		        
-		        // Calculate new vertical offset, 15% of size
-		        var tiOffset as Integer = Ceiling(me.IconSize * 0.15)
-		        tsOffset = "-" + tiOffset.ToString
-		        
-		      end
-		      
-		      tarsStyle.AddRow(tsOffset)
 		      
 		      // Color options
-		      var tcRequest as Color = me.CaptionColor
+		      var currentIconColor as Color = me.CaptionColor
 		      if me.HasIconColor then
-		        tcRequest = me.IconColor
+		        
+		        currentIconColor = me.IconColor
 		        
 		      end
 		      
-		      // Build final icon tag
-		      var tsIcon as String = WebPicture.BootstrapIcon(me.IconName, tcRequest).Data
-		      var tsStyle as String = String.FromArray(tarsStyle, "")
+		      Var icon As String = GetBootstrapIcon(Me.IconName, Me.IconSize, currentIconColor)
 		      
-		      tarsRaw.AddRow("<span style=""" + tsStyle + """>" + tsIcon + "</span>")
+		      tarsRaw.AddRow("<span>" + icon + "</span>")
 		      
 		    case eIconTypes.FontAwesome5_Brands, eIconTypes.FontAwesome5_Duotone, _
 		      eIconTypes.FontAwesome5_Light, eIconTypes.FontAwesome5_Regular, _
