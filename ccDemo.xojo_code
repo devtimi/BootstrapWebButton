@@ -21,6 +21,7 @@ Begin WebContainer ccDemo
    Width           =   337
    _mDesignHeight  =   0
    _mDesignWidth   =   0
+   _mName          =   ""
    _mPanelIndex    =   -1
    Begin BootstrapWebButton btnTest
       AllowAutoDisable=   False
@@ -50,10 +51,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   0
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   20
       Visible         =   True
@@ -78,10 +77,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   215
       Visible         =   True
@@ -106,10 +103,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   215
       Visible         =   True
@@ -134,10 +129,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   315
       Visible         =   True
@@ -162,10 +155,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   315
       Visible         =   True
@@ -190,10 +181,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   429
       Visible         =   True
@@ -218,10 +207,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   429
       Visible         =   True
@@ -246,10 +233,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   429
       Visible         =   True
@@ -274,10 +259,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   1
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   315
       Visible         =   True
@@ -304,11 +287,9 @@ Begin WebContainer ccDemo
       LockTop         =   True
       LockVertical    =   False
       MaximumCharactersAllowed=   0
-      PanelIndex      =   "0"
       ReadOnly        =   False
       Scope           =   2
       TabIndex        =   2
-      TabStop         =   True
       Text            =   ""
       TextAlignment   =   2
       Tooltip         =   ""
@@ -336,10 +317,8 @@ Begin WebContainer ccDemo
       LockTop         =   True
       LockVertical    =   False
       Multiline       =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   3
-      TabStop         =   True
       Text            =   "Caption"
       TextAlignment   =   0
       TextColor       =   &c00000000
@@ -369,10 +348,8 @@ Begin WebContainer ccDemo
       LockTop         =   True
       LockVertical    =   False
       Multiline       =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   3
-      TabStop         =   True
       Text            =   "Icon"
       TextAlignment   =   0
       TextColor       =   &c00000000
@@ -402,10 +379,8 @@ Begin WebContainer ccDemo
       LockTop         =   True
       LockVertical    =   False
       Multiline       =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   3
-      TabStop         =   True
       Text            =   "Horizontal alignment"
       TextAlignment   =   0
       TextColor       =   &c00000000
@@ -432,10 +407,8 @@ Begin WebContainer ccDemo
       LockRight       =   False
       LockTop         =   True
       LockVertical    =   False
-      PanelIndex      =   "0"
       Scope           =   2
       TabIndex        =   4
-      TabStop         =   True
       Tooltip         =   ""
       Top             =   504
       Value           =   False

@@ -37,19 +37,32 @@ Inherits WebButton
 	#tag EndMethod
 
 	#tag Method, Flags = &h21
-		Private Function GetBootstrapIcon(pName As String, pSize As Integer = 16, pColor As Color = Color.Black) As String
-		  var icon as String = WebPicture.BootstrapIcon(pName, pColor).Data
+		Private Function GetBootstrapIcon(pName as String, iSize as Integer, cIconColor as Color) As String
+		  // Check that the IconName resolves a Bootstrap Icon
+		  var picIcon as WebPicture = WebPicture.BootstrapIcon(pName, cIconColor)
+		  if picIcon = nil then return ""
 		  
-		  Var regex As New Regex()
-		  regex.SearchPattern = "(width|height)=""(\d+)"""
+		  // WebPicture.BootstrapIcon.Data will give us a <svg> object to insert
+		  var sSVG as String = WebPicture.BootstrapIcon(pName, cIconColor).Data
 		  
-		  Var replacementPtn As String = "\1=""[iconSize]"""
-		  replacementPtn = replacementPtn.Replace("[iconSize]", pSize.ToString())
+		  // Search the SVG for the size information and replace it with our desired size
+		  var rx as new Regex
+		  rx.SearchPattern = "(width|height)=""(\d+)"""
 		  
-		  regex.ReplacementPattern = replacementPtn
-		  regex.Options.ReplaceAllMatches = True
+		  if iSize = 0 then
+		    // Default bootstrap height
+		    rx.ReplacementPattern = "\1=""1rem"""
+		    
+		  else
+		    // Custom height
+		    rx.ReplacementPattern = "\1=""" + iSize.ToString + """"
+		    
+		  end
 		  
-		  Return regex.Replace(icon)
+		  rx.Options.ReplaceAllMatches = true
+		  
+		  var sSized as String = rx.Replace(sSVG)
+		  return sSized
 		End Function
 	#tag EndMethod
 
@@ -89,7 +102,7 @@ Inherits WebButton
 
 	#tag Method, Flags = &h0
 		Function HasIcon() As Boolean
-		  return (me.IconType <> eIconTypes.None)
+		  return (me.IconType <> eIconTypes.None) and (me.IconName.Trim <> "")
 		End Function
 	#tag EndMethod
 
@@ -138,18 +151,15 @@ Inherits WebButton
 		    
 		    select case me.IconType
 		    case eIconTypes.Bootstrap
-		      
 		      // Color options
-		      var currentIconColor as Color = me.CaptionColor
+		      var cRequest as Color = me.CaptionColor
 		      if me.HasIconColor then
-		        
-		        currentIconColor = me.IconColor
+		        cRequest = me.IconColor
 		        
 		      end
 		      
-		      Var icon As String = GetBootstrapIcon(Me.IconName, Me.IconSize, currentIconColor)
-		      
-		      tarsRaw.AddRow("<span>" + icon + "</span>")
+		      var sIcon as String = GetBootstrapIcon(me.IconName, me.IconSize, cRequest)
+		      tarsRaw.AddRow("<span style=""vertical-align:0.8pt"">" + sIcon + "</span>")
 		      
 		    case eIconTypes.FontAwesome5_Brands, eIconTypes.FontAwesome5_Duotone, _
 		      eIconTypes.FontAwesome5_Light, eIconTypes.FontAwesome5_Regular, _
@@ -682,12 +692,13 @@ Inherits WebButton
 			Visible=true
 			Group="Button"
 			InitialValue=""
-			Type="eHorizontalAlignments"
+			Type="TextAlignments"
 			EditorType="Enum"
 			#tag EnumValues
 				"0 - Default"
 				"1 - Left"
-				"2 - Right"
+				"2 - Center"
+				"3 - Right"
 			#tag EndEnumValues
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -719,7 +730,7 @@ Inherits WebButton
 			Visible=true
 			Group="Button"
 			InitialValue=""
-			Type="integer"
+			Type="Integer"
 			EditorType=""
 		#tag EndViewProperty
 		#tag ViewProperty
@@ -760,7 +771,7 @@ Inherits WebButton
 			Visible=true
 			Group="Button"
 			InitialValue=""
-			Type="string"
+			Type="String"
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
